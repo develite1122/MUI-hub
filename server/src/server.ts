@@ -5,8 +5,6 @@ import morgan from 'morgan';
 
 import passport from './config/passport/passport';
 import mongoose from 'mongoose';
-import authRouter from './routes/auth/authRouter';
-import userRouter from './routes/user/userRouter';
 import hubRouter from './routes/hub/hubRouter';
 
 const app = express();
@@ -18,8 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.use('/auth', authRouter);
-app.use('/user', userRouter);
 app.use('/hub', hubRouter);
 
 async function main() {

@@ -1,5 +1,4 @@
 import React from 'react';
-import MainBody from '../../organisms/MainBody';
 import { useSelector } from 'react-redux';
 import { selectHub } from '../../../store/selectors';
 import { IHub, IHubState } from '../../../@types';
@@ -17,6 +16,10 @@ import {
     TableRow,
     LinearProgress,
 } from '@mui/material';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getHub } from '../../../store/actions/hub/hubActions';
 
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -75,6 +78,13 @@ LinearProgressWithLabel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 const HomePageLayout = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getHub());
+    }, [dispatch]);
+
     const rows: IHubState = useSelector(selectHub);
     return (
         <>
